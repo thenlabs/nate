@@ -1,0 +1,34 @@
+{
+    "name": "thenlabs/nate",
+    "description": "A template engine for PHP which take adventage of native features.",
+    "keywords": [
+        "template",
+        "template-engine"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andy Daniel Navarro Taño",
+            "email": "andaniel05@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.2",
+        "thenlabs/pyramidal-tests": "2.0.x-dev",
+        "thenlabs/snapshots-comparator": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "ThenLabs\\Nate\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ThenLabs\\Nate\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "fix": "./vendor/bin/php-cs-fixer fix",
+        "test": "./vendor/bin/pyramidal"
+    }
+}
