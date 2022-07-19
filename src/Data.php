@@ -20,7 +20,7 @@ class Data
 
     public function __toString()
     {
-        return htmlspecialchars($this->value);
+        return htmlspecialchars(strval($this->value));
     }
 
     public function raw()

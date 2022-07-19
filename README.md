@@ -6,7 +6,7 @@ A template engine for PHP which take adventage of native features.
 
 ## Installation.
 
-    $ composer require thenlabs/nate
+    $ composer require thenlabs/nate dev-main
 
 ## Usage example.
 
