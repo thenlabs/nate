@@ -151,7 +151,8 @@ class Compiler
     public function __get($name)
     {
         if (array_key_exists($name, $this->_data)) {
-            $data = new Data($this->_data[$name]);
+            $dataClass = $this->_config->getDataClass();
+            $data = new $dataClass($this->_data[$name]);
             return $data;
         }
 

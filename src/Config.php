@@ -8,4 +8,8 @@ namespace ThenLabs\Nate;
  */
 class Config
 {
+    public function getDataClass(): string
+    {
+        return Data::class;
+    }
 }
