@@ -2,6 +2,8 @@
 
 A template engine for PHP which take adventage of native features.
 
+If you know [Twig](https://twig.symfony.com/), you know Nate.
+
 >If you like this project gift us a ⭐.
 
 ## Installation.
@@ -60,6 +62,7 @@ A template engine for PHP which take adventage of native features.
 use ThenLabs\Nate\Template;
 
 $page = new Template('page.tpl.php');
+
 echo $page->render([
     'lang' => 'en',
     'title' => 'My Title',

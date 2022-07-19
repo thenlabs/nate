@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace ThenLabs\Nate;
 
+use TypeError;
+
 /**
  * @author Andy Daniel Navarro Taño <andaniel05@gmail.com>
  */
@@ -33,9 +35,14 @@ class Compiler
      */
     protected $_currentBlock;
 
-    public function __construct(Template $template)
+    /**
+     * @var Config
+     */
+    protected $_config;
+
+    public function __construct(?Config $config = null)
     {
-        $this->_template = $template;
+        $this->_config = $config ?? new Config();
     }
 
     protected function getTemplateFileName(string $templatePath, bool $isRelative = false): string
@@ -94,8 +101,21 @@ class Compiler
         $this->_currentBlock = $this->_currentBlock->getParent();
     }
 
-    public function compile(array $data): void
+    /**
+     * @param Template|string $template
+     * @param array $data
+     * @return string
+     */
+    public function compile($template, array $data): string
     {
+        if (is_string($template)) {
+            $this->_template = new Template($template);
+        } elseif ($template instanceof Template) {
+            $this->_template = $template;
+        } else {
+            throw new TypeError('Invalid type for the template argument.');
+        }
+
         $this->_data = $data;
 
         $this->loadTemplate($this->_template->getFileName());
@@ -114,6 +134,8 @@ class Compiler
                 $this->_buffer
             );
         }
+
+        return $this->_buffer;
     }
 
     public function parent(): ?string
@@ -142,5 +164,15 @@ class Compiler
         $template = new Template($fileName);
 
         return $template->render($data);
+    }
+
+    public function getConfig(): Config
+    {
+        return $this->_config;
+    }
+
+    public function setConfig(Config $config): void
+    {
+        $this->_config = $config;
     }
 }

@@ -31,8 +31,8 @@ class Template
 
     public function render(array $data = []): ?string
     {
-        $compiler = new Compiler($this);
-        $compiler->compile($data);
+        $compiler = new Compiler();
+        $compiler->compile($this, $data);
 
         return $compiler->getResult();
     }

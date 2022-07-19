@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace ThenLabs\Nate\Exception;
+namespace ThenLabs\Nate;
 
 /**
  * @author Andy Daniel Navarro Taño <andaniel05@gmail.com>
  */
-class NateException extends \Exception
+class Config
 {
 }
