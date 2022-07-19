@@ -6,7 +6,7 @@ namespace ThenLabs\Nate\Exception;
 /**
  * @author Andy Daniel Navarro Taño <andaniel05@gmail.com>
  */
-class TemplateNotFound extends NateException
+class TemplateNotFoundException extends NateException
 {
     public function __construct(string $fileName)
     {

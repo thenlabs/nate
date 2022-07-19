@@ -1,12 +1,12 @@
 <?php
 
-use ThenLabs\Nate\Exception\TemplateNotFound;
+use ThenLabs\Nate\Exception\TemplateNotFoundException;
 use ThenLabs\Nate\Template;
 
 test(function () {
     $fileName = uniqid('template').'.tpl.php';
 
-    $this->expectException(TemplateNotFound::class);
+    $this->expectException(TemplateNotFoundException::class);
     $this->expectExceptionMessage("Template not found in '{$fileName}'.");
 
     new Template($fileName);

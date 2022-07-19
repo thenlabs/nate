@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace ThenLabs\Nate;
 
-use ThenLabs\Nate\Exception\TemplateNotFound;
+use ThenLabs\Nate\Exception\TemplateNotFoundException;
 
 /**
  * @author Andy Daniel Navarro Taño <andaniel05@gmail.com>
@@ -18,7 +18,7 @@ class Template
     public function __construct(string $fileName)
     {
         if (! file_exists($fileName)) {
-            throw new TemplateNotFound($fileName);
+            throw new TemplateNotFoundException($fileName);
         }
 
         $this->fileName = $fileName;
