@@ -3,10 +3,15 @@ declare(strict_types=1);
 
 namespace ThenLabs\Nate;
 
+use ArrayAccess;
+use IteratorAggregate;
+use ThenLabs\Nate\Exception\NonIterableDataException;
+use Traversable;
+
 /**
  * @author Andy Daniel Navarro Taño <andaniel05@gmail.com>
  */
-class Data
+class Data implements IteratorAggregate, ArrayAccess
 {
     /**
      * @var mixed
@@ -26,5 +31,42 @@ class Data
     public function raw()
     {
         return $this->value;
+    }
+
+    public function getIterator(): Traversable
+    {
+        if (! is_iterable($this->value)) {
+            throw new NonIterableDataException();
+        }
+
+        $generator = function (iterable $iterable) {
+            foreach ($iterable as $data) {
+                yield new Data($data);
+            }
+
+            return;
+        };
+
+        return $generator($this->value);
+    }
+
+    public function offsetExists($offset): bool
+    {
+        return array_key_exists($offset, $this->value);
+    }
+
+    public function offsetGet($offset): mixed
+    {
+        return $this->value[$offset];
+    }
+
+    public function offsetSet($offset, mixed $value): void
+    {
+        $this->value[$offset] = $value;
+    }
+
+    public function offsetUnset($offset): void
+    {
+        unset($this->value[$offset]);
     }
 }
