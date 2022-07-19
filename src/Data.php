@@ -55,6 +55,7 @@ class Data implements IteratorAggregate, ArrayAccess
         return array_key_exists($offset, $this->value);
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->value[$offset];

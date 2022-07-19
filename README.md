@@ -16,7 +16,7 @@ If you know [Twig](https://twig.symfony.com/), you know Nate.
 | `<?php $this->block('name') ?>` | `{% block name %}` |
 | `<?php $this->endblock() ?>` | `{% endblock %}` |
 | `<?php if ($condition) : ?>` | `{% if condition %}` |
-| `<?php foreach($array as $key => $value) : ?>` | `{% for (key, value) in array %}` |
+| `<?php foreach($array as $key => $value) : ?>` | `{% for key, value in array %}` |
 | `<?= $this->includeTemplate('another.tpl.php', ['data' => 'value']) ?>` | `{{ include('another.html.twig', {data: 'value'}) }}` |
 
 ## Installation.
