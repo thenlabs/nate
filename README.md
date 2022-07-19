@@ -8,6 +8,85 @@ A template engine for PHP which take adventage of native features.
 
     $ composer require thenlabs/nate
 
+## Usage example.
+
+`base.tpl.php`:
+
+```php
+<!DOCTYPE html>
+<html lang="<?= $this->lang ?>">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $this->title ?></title>
+
+    <?php $this->block('styles') ?>
+    <?php $this->endblock() ?>
+</head>
+<body>
+    <?php $this->block('body') ?>
+    <?php $this->endblock() ?>
+
+    <?php $this->block('scripts') ?>
+    <?php $this->endblock() ?>
+</body>
+</html>
+```
+
+`page.tpl.php`:
+
+```php
+<?php $this->extends('base.tpl.php') ?>
+
+<?php $this->block('styles') ?>
+    <link rel="stylesheet" href="style.css">
+<?php $this->endblock() ?>
+
+<?php $this->block('body') ?>
+    <p>This is a paragraph.</p>
+<?php $this->endblock() ?>
+
+<?php $this->block('scripts') ?>
+    <script src="scripts.js"></script>
+<?php $this->endblock() ?>
+```
+
+`index.php`:
+
+```php
+<?php
+
+use ThenLabs\Nate\Template;
+
+$page = new Template('page.tpl.php');
+echo $page->render([
+    'lang' => 'en',
+    'title' => 'My Title',
+]);
+```
+
+### Output:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Title</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p>This is a paragraph.</p>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+```
+
 ## Development.
 
 Clone this repository and install the Composer dependencies.
