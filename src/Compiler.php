@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ThenLabs\Nate;
 
+use ThenLabs\Nate\Exception\DataNotFoundException;
 use TypeError;
 
 /**
@@ -150,13 +151,14 @@ class Compiler
 
     public function __get($name)
     {
-        if (array_key_exists($name, $this->_data)) {
-            $dataClass = $this->_config->getDataClass();
-            $data = new $dataClass($this->_data[$name]);
-            return $data;
+        if (! array_key_exists($name, $this->_data)) {
+            throw new DataNotFoundException($name);
         }
 
-        return null;
+        $dataClass = $this->_config->getDataClass();
+        $data = new $dataClass($this->_data[$name]);
+
+        return $data;
     }
 
     public function includeTemplate(string $templatePath, array $data = []): ?string
