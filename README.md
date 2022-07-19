@@ -1,10 +1,23 @@
 # Nate
 
-A template engine for PHP which take adventage of native features.
+A Twig-inspired template engine which take adventage of native PHP features.
 
 If you know [Twig](https://twig.symfony.com/), you know Nate.
 
 >If you like this project gift us a ⭐.
+
+## Quick reference.
+
+| Nate | Twig |
+| ---- | ---- |
+| `<?= $this->data ?>` | `{{ data }}` |
+| `<?= $this->data->raw() ?>` | `{{ data\|raw }}` |
+| `<?php $this->extends('base.tpl.php') ?>` | `{% extends 'base.html.twig' %}` |
+| `<?php $this->block('name') ?>` | `{% block name %}` |
+| `<?php $this->endblock() ?>` | `{% endblock %}` |
+| `<?php if ($condition) : ?>` | `{% if condition %}` |
+| `<?php foreach($array as $key => $value) : ?>` | `{% for (key, value) in array %}` |
+| `<?= $this->includeTemplate('another.tpl.php', ['data' => 'value']) ?>` | `{{ include('another.html.twig', {data: 'value'}) }}` |
 
 ## Installation.
 

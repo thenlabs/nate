@@ -1,6 +1,6 @@
 {
     "name": "thenlabs/nate",
-    "description": "A template engine for PHP which take adventage of native features.",
+    "description": "A Twig-inspired template engine which take adventage of native PHP features.",
     "keywords": [
         "template",
         "template-engine"

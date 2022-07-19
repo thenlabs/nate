@@ -55,12 +55,12 @@ class Data implements IteratorAggregate, ArrayAccess
         return array_key_exists($offset, $this->value);
     }
 
-    public function offsetGet($offset): mixed
+    public function offsetGet($offset)
     {
         return $this->value[$offset];
     }
 
-    public function offsetSet($offset, mixed $value): void
+    public function offsetSet($offset, $value): void
     {
         $this->value[$offset] = $value;
     }
