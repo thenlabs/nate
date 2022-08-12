@@ -12,12 +12,12 @@ If you know [Twig](https://twig.symfony.com/), you know Nate.
 | ---- | ---- |
 | `<?= $this->data ?>` | `{{ data }}` |
 | `<?= $this->data->raw() ?>` | `{{ data\|raw }}` |
-| `<?php $this->extends('base.tpl.php') ?>` | `{% extends 'base.html.twig' %}` |
+| `<?php $this->extends('base.nate.php') ?>` | `{% extends 'base.html.twig' %}` |
 | `<?php $this->block('name') ?>` | `{% block name %}` |
 | `<?php $this->endblock() ?>` | `{% endblock %}` |
 | `<?php if ($condition) : ?>` | `{% if condition %}` |
 | `<?php foreach($array as $key => $value) : ?>` | `{% for key, value in array %}` |
-| `<?= $this->includeTemplate('another.tpl.php', ['data' => 'value']) ?>` | `{{ include('another.html.twig', {data: 'value'}) }}` |
+| `<?= $this->includeTemplate('another.nate.php', ['data' => 'value']) ?>` | `{{ include('another.html.twig', {data: 'value'}) }}` |
 
 ## Installation.
 
@@ -25,7 +25,7 @@ If you know [Twig](https://twig.symfony.com/), you know Nate.
 
 ## Usage example.
 
-`base.tpl.php`:
+`base.nate.php`:
 
 ```php
 <!DOCTYPE html>
@@ -74,7 +74,7 @@ If you know [Twig](https://twig.symfony.com/), you know Nate.
 
 use ThenLabs\Nate\Template;
 
-$page = new Template('page.tpl.php');
+$page = new Template(__DIR__.'/page.tpl.php');
 
 echo $page->render([
     'lang' => 'en',
