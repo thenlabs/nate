@@ -49,10 +49,10 @@ If you know [Twig](https://twig.symfony.com/), you know Nate.
 </html>
 ```
 
-`page.tpl.php`:
+`page.nate.php`:
 
 ```php
-<?php $this->extends('base.tpl.php') ?>
+<?php $this->extends('base.nate.php') ?>
 
 <?php $this->block('styles') ?>
     <link rel="stylesheet" href="style.css">
@@ -74,7 +74,7 @@ If you know [Twig](https://twig.symfony.com/), you know Nate.
 
 use ThenLabs\Nate\Template;
 
-$page = new Template(__DIR__.'/page.tpl.php');
+$page = new Template(__DIR__.'/page.nate.php');
 
 echo $page->render([
     'lang' => 'en',
